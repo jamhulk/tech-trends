@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    plan: starter  # or standard if you need more performance
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: yourusername
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: yourpassword
+      - key: N8N_ENCRYPTION_KEY
+        value: randomlongstringhere
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_HOST
+        fromDatabase:
+          name: n8n-db
+          property: host
+      - key: DB_POSTGRESDB_PORT
+        fromDatabase:
+          name: n8n-db
+          property: port
+      - key: DB_POSTGRESDB_DATABASE
+        fromDatabase:
+          name: n8n-db
+          property: database
+      - key: DB_POSTGRESDB_USER
+        fromDatabase:
+          name: n8n-db
+          property: user
+      - key: DB_POSTGRESDB_PASSWORD
+        fromDatabase:
+          name: n8n-db
+          property: password
+      - key: WEBHOOK_URL
+        value: https://your-n8n-service.onrender.com
+
+databases:
+  - name: n8n-db
+    plan: starter
+    postgresMajorVersion: 15
