@@ -1,24 +1,25 @@
-services:
-  - type: web
-    name: n8n
-    env: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
-    autoDeploy: true
-    buildCommand: ""
-    startCommand: "n8n start"
-    envVars:
-      - key: N8N_BASIC_AUTH_ACTIVE
-        value: "true"
-      - key: N8N_BASIC_AUTH_USER
-        value: "admin"
-      - key: N8N_BASIC_AUTH_PASSWORD
-        value: "password"
-      - key: N8N_DB_SQLITE
-        value: "true"
-      - key: N8N_DB_SQLITE_PATH
-        value: "/persistent/n8n.sqlite"
-    disk:
-      name: persistent
-      mountPath: /persistent
-      sizeGb: 1
+ services:
+   - type: web
+     name: n8n
+     env: docker
+     plan: free
+     dockerfilePath: ./Dockerfile
+     autoDeploy: true
+     buildCommand: ""
+     startCommand: "n8n start"
+     envVars:
+       - key: N8N_BASIC_AUTH_ACTIVE
+         value: "true"
+       - key: N8N_BASIC_AUTH_USER
+         value: "admin"
+       - key: N8N_BASIC_AUTH_PASSWORD
+         value: "password"
+       - key: N8N_DB_SQLITE
+         value: "true"
+       - key: N8N_DB_SQLITE_PATH
+         value: "/data/n8n.sqlite"
+     disk:
+       name: persistent
+       mountPath: /data
+       sizeGb: 1
+ ```
