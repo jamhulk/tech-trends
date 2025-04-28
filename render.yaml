@@ -22,11 +22,3 @@ services:
       name: persistent
       mountPath: /persistent
       sizeGb: 1
-
-databases:
-  - type: sqlite
-    name: n8n-db
-    disk:
-      name: persistent
-      mountPath: /persistent
-      sizeGb: 1
