@@ -1,21 +1,18 @@
- FROM n8nio/n8n
+FROM n8nio/n8n
 
- # Set environment variables
- ENV N8N_BASIC_AUTH_ACTIVE=true
- ENV N8N_BASIC_AUTH_USER=admin
- ENV N8N_BASIC_AUTH_PASSWORD=password
- ENV N8N_DB_SQLITE=true
- ENV N8N_DB_SQLITE_PATH=/data/n8n.sqlite
+# Set environment variables
+ENV N8N_BASIC_AUTH_ACTIVE=true
+ENV N8N_BASIC_AUTH_USER=admin
+ENV N8N_BASIC_AUTH_PASSWORD=password
+ENV DB_TYPE=postgresdb
+ENV DB_POSTGRESDB_HOST=YOUR_POSTGRES_HOST
+ENV DB_POSTGRESDB_PORT=5432
+ENV DB_POSTGRESDB_DATABASE=YOUR_DATABASE_NAME
+ENV DB_POSTGRESDB_USER=YOUR_DATABASE_USER
+ENV DB_POSTGRESDB_PASSWORD=YOUR_DATABASE_PASSWORD
 
- # Create a directory for SQLite database
- RUN mkdir -p /data
+# Expose the port n8n will run on
+EXPOSE 5678
 
- # Set the working directory
- WORKDIR /data
-
- # Expose the port n8n will run on
- EXPOSE 5678
-
- # Start n8n
- CMD ["n8n", "start"]
- ```
+# Start n8n
+CMD ["n8n", "start"]
