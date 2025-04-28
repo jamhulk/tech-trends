@@ -36,6 +36,6 @@ databases:
     name: n8n-db
     plan: free
     properties:
-      databaseName: n8n_wz4s
-      user: n8ndb
-      password: aV9rzvILhjgMzCTBtTYLxA7VrQCXRqs7
+      databaseName: 
+      user: 
+      password: 
