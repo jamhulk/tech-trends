@@ -14,11 +14,28 @@ services:
         value: "admin"
       - key: N8N_BASIC_AUTH_PASSWORD
         value: "password"
-      - key: N8N_DB_SQLITE
-        value: "true"
-      - key: N8N_DB_SQLITE_PATH
-        value: "/persistent/n8n.sqlite"
+      - key: DB_TYPE
+        value: "postgresdb"
+      - key: DB_POSTGRESDB_HOST
+        value: "YOUR_POSTGRES_HOST"
+      - key: DB_POSTGRESDB_PORT
+        value: "5432"
+      - key: DB_POSTGRESDB_DATABASE
+        value: "YOUR_DATABASE_NAME"
+      - key: DB_POSTGRESDB_USER
+        value: "YOUR_DATABASE_USER"
+      - key: DB_POSTGRESDB_PASSWORD
+        value: "YOUR_DATABASE_PASSWORD"
     disk:
       name: persistent
       mountPath: /persistent
       sizeGb: 1
+
+databases:
+  - type: postgres
+    name: n8n-db
+    plan: free
+    properties:
+      databaseName: n8n_wz4s
+      user: n8ndb
+      password: aV9rzvILhjgMzCTBtTYLxA7VrQCXRqs7
