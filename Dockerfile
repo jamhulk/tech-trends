@@ -1,18 +1,12 @@
 FROM n8nio/n8n
 
-# Set environment variables
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=admin
-ENV N8N_BASIC_AUTH_PASSWORD=password
-ENV DB_TYPE=postgresdb
-ENV DB_POSTGRESDB_HOST=
-ENV DB_POSTGRESDB_PORT=5432
-ENV DB_POSTGRESDB_DATABASE=
-ENV DB_POSTGRESDB_USER=
-ENV DB_POSTGRESDB_PASSWORD=
+# Create a directory for n8n data
+RUN mkdir -p /data
 
-# Expose the port n8n will run on
-EXPOSE 5678
+# Set the working directory
+WORKDIR /data
 
-# Start n8n
-CMD ["n8n", "start"]
+# You might want to install additional n8n community nodes here if needed
+# Example: RUN npm install n8n-nodes-my-community-node -g
+
+# The entrypoint is already defined in the base image
